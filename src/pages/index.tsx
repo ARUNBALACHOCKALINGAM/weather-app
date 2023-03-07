@@ -94,7 +94,7 @@ export default function Home() {
               state={state}
               celsiusTemperature={celsiusTemperature}
               fahrenheitTemperature={fahrenheitTemperature}
-              image={`http:${image}`}
+              image={`https:${image}`}
               country={country}
             />
             <Card
@@ -105,7 +105,7 @@ export default function Home() {
               fahrenheitMaxTemperature={forecastData[0].day.maxtemp_f}
               celsiusMinTemperature={forecastData[0].day.mintemp_c}
               fahrenheitMinTemperature={forecastData[0].day.mintemp_f}
-              image={`http:${forecastData[0].day.condition.icon}`}
+              image={`https:${forecastData[0].day.condition.icon}`}
               country={country}
             />
           </div>
@@ -129,7 +129,7 @@ export default function Home() {
                     fahrenheitMaxTemperature={data.day.maxtemp_f}
                     celsiusMinTemperature={data.day.mintemp_c}
                     fahrenheitMinTemperature={data.day.mintemp_f}
-                    image={`http:${data.day.condition.icon}`}
+                    image={`https:${data.day.condition.icon}`}
                     country={country}
                   />
                 );
