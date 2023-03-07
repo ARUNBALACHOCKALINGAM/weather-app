@@ -1,0 +1,135 @@
+.container {
+    width: 100vw;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inputLabel {
+    display: none;
+  }
+  
+  .inputWrap {
+    width: 50%;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.8rem;
+    background: black;
+    box-sizing: border-box;
+    box-shadow: 1px 6px 10px rgba(255, 255, 255, 0.25);
+  }
+  
+  .inputWrap i {
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  .productSearch {
+    font-size: 1.4rem;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 1rem;
+    background: black;
+    border: none;
+    outline: none;
+  }
+  
+  .productSearch::placeholder {
+    color: white;
+    opacity: 0.7;
+  }
+  
+  .fa-times:hover {
+    cursor: pointer;
+  }
+  
+  .resultsWrap {
+    width: 50%;
+    min-height: 11rem;
+    max-height: auto;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .searchWrap {
+    width: 50%;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .listItem {
+    display: inline-flex;
+    word-wrap: initial;
+    list-style-type: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-transform: capitalize;
+    margin-right: 0.5rem;
+  }
+  
+  .listItem a {
+    color: grey;
+    text-decoration: none;
+  }
+  
+  .listItem a:hover {
+    color: white;
+    transition: 200ms ease-in;
+  }
+  
+  @media (max-width: 768px) {
+    .inputWrap {
+      width: 96%;
+      height: 3rem;
+      padding: 0 0.9rem 0 0.9rem;
+    }
+
+    .listItem {
+      font-size: 1rem;
+    }
+
+    .productSearch {
+      font-size: 1.5rem;
+      padding: 0 0 0 1rem;
+    }
+
+    .container {
+      margin-top: 15%;
+    }
+    
+    .resultsWrap {
+      width: 96%;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .inputWrap {
+      width: 80%;
+      height: 2rem;
+      padding: 0 0.9rem 0 0.9rem;
+    }
+    
+    .resultsWrap {
+      width: 86%;
+      height: 2rem;
+      padding: 0 0.9rem 0 0.9rem;
+    }
+
+    .listItem {
+      font-size: 0.8rem;
+    }
+
+    .productSearch {
+      font-size: 1.2rem;
+      padding: 0 0 0 1rem;
+    }
+  }
+  

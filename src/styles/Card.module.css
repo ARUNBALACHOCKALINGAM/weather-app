@@ -1,0 +1,50 @@
+.cardContainer {
+  width: 30%;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.8rem;
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.25);
+  font-size: 1rem;
+  padding: 5%;
+  text-align: center;
+  font-size: 1.2rem;
+  box-sizing: content-box;
+}
+
+.weatherData{
+  width: 100%;
+  padding: 5%;
+}
+
+.sunnyandwindy{
+  position: relative;
+  bottom: 30px;
+  right: 20px;
+}
+
+@media (max-width: 500px) {
+  .sunnyandwindy{
+   width: 90px;
+   height: 90px;
+  }
+  .cardContainer{
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 1340px) {
+  .sunnyandwindy{
+   width: 90px;
+   height: 90px;
+  }
+  .cardContainer{
+    width: 100%;
+    font-size: 1rem;
+
+  }
+}

@@ -3,8 +3,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: 100vh;
   padding: 6rem;
-  min-height: 100vh;
+}
+
+.body{
+  height: 100vh;
 }
 
 .description {
@@ -18,11 +22,37 @@
   font-family: var(--font-mono);
 }
 
+.header{
+  justify-content: center;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.searchBar{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.searchInput{
+  padding: 0.8%;
+  width: 33.3%;
+  border-radius: 10px;
+}
+
 .description a {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+}
+
+.cardContainer{
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .description p {
@@ -178,6 +208,10 @@
   .content {
     padding: 4rem;
   }
+  
+  .cardContainer{
+    width: 80%;
+  }
 
   .grid {
     grid-template-columns: 1fr;
@@ -255,6 +289,7 @@
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
+
 }
 
 @media (prefers-color-scheme: dark) {
