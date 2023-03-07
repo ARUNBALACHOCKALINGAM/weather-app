@@ -42,7 +42,7 @@ export default function Home() {
 
   const fetchWeather = async (state: string) => {
     const response: any = await axios.post(
-      `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no`
+      `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no`
     );
 
     setState(state);
@@ -54,7 +54,7 @@ export default function Home() {
 
   const fetchWeatherForecast = async (state: string) => {
     const forecast: any = await axios.post(
-      `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no&days=5`
+      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no&days=5`
     );
     const data = forecast.data.forecast.forecastday;
     
