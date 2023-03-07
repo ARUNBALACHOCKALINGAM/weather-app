@@ -7,12 +7,12 @@ type Props = {
   day: String;
   date: String;
   state: String;
-  celsiusTemperature: String;
-  fahrenheitTemperature: String;
-  celsiusMaxTemperature: String;
-  celsiusMinTemperature: String;
-  fahrenheitMaxTemperature: String;
-  fahrenheitMinTemperature: String;
+  celsiusTemperature?: String;
+  fahrenheitTemperature?: String;
+  celsiusMaxTemperature?: String;
+  celsiusMinTemperature?: String;
+  fahrenheitMaxTemperature?: String;
+  fahrenheitMinTemperature?: String;
   image: string;
   country: string;
 };

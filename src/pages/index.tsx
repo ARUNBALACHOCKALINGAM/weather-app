@@ -130,6 +130,7 @@ export default function Home() {
                     celsiusMinTemperature={data.day.mintemp_c}
                     fahrenheitMinTemperature={data.day.mintemp_f}
                     image={`http:${data.day.condition.icon}`}
+                    country={country}
                   />
                 );
               })}
