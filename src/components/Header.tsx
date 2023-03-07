@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <div className={styles.header}>
       <p>KNOW THE</p>
-      <h1>WEATHER</h1>
+      <h1 className={styles.headerText}>WEATHER</h1>
       <p>OF YOUR CITY</p>
     </div>
   );

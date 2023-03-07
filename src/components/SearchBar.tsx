@@ -3,14 +3,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { MdOutlineCancel } from "react-icons/md";
 import styles from "@/styles/SearchBar.module.css";
 import { Country, State, City } from "country-state-city";
-console.log(Country.getAllCountries());
-console.log(State.getAllStates());
 
 // Import Interfaces`
 import { ICountry, IState, ICity } from "country-state-city";
 
 type Props = {
   fetchWeather: Function
+  fetchWeatherForecast: Function
+  clearCurrentData: Function
 };
 
 export const SearchBar = (props: Props) => {
@@ -18,13 +18,14 @@ export const SearchBar = (props: Props) => {
 
   const handleInput = (e: any) => {
     setSearchVal(e.target.value);
+    props.clearCurrentData();
   };
 
   const handleClearBtn = () => {
     setSearchVal("");
   };
 
-  const filteredProducts = State.getAllStates().filter((state) => {
+  const filteredCountries = State.getAllStates().filter((state) => {
     return (
       state.name.toUpperCase().includes(searchVal.toUpperCase()) && searchVal.length > 2
     );
@@ -39,7 +40,7 @@ export const SearchBar = (props: Props) => {
           style={{ fontSize: "2rem" }}
         ></AiOutlineSearch>
         <label
-          htmlFor="product-search"
+          htmlFor="country-search"
           id="inputLabel"
           className={styles.inputLabel}
         >
@@ -49,9 +50,9 @@ export const SearchBar = (props: Props) => {
           onChange={handleInput}
           value={searchVal}
           type="text"
-          name="product-search"
-          id="product-search"
-          className={styles.productSearch}
+          name="country-search"
+          id="country-search"
+          className={styles.countrySearch}
           placeholder="Search your city"
         />
         <MdOutlineCancel
@@ -60,7 +61,7 @@ export const SearchBar = (props: Props) => {
           style={{ fontSize: "2rem" }}
         ></MdOutlineCancel>
       </div>
-      {filteredProducts.length < 1 ? (
+      {filteredCountries.length < 1 ? (
         <div className={styles.searchWrap}>
         <li className={styles.listItem}>
           <a>{searchVal}</a>
@@ -69,13 +70,14 @@ export const SearchBar = (props: Props) => {
       ) : (
         <div className={styles.resultsWrap}>
           <ul>
-            {filteredProducts.map((product) => {
+            {filteredCountries.map((country) => {
               return (
-                <li key={product.name} className={styles.listItem}>
+                <li key={country.name} className={styles.listItem}>
                   <a onClick={()=>{
                     handleClearBtn();
-                    props.fetchWeather(product.name)
-                  }}>{product.name}</a>
+                    props.fetchWeather(country.name)
+                    props.fetchWeatherForecast(country.name)
+                  }}>{country.name}</a>
                 </li>
               );
             })}

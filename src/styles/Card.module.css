@@ -1,5 +1,5 @@
 .cardContainer {
-  width: 30%;
+  width: 33%;
   margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
@@ -13,6 +13,7 @@
   text-align: center;
   font-size: 1.2rem;
   box-sizing: content-box;
+  background-color: black;
 }
 
 .weatherData{
