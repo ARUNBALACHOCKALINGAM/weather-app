@@ -11,7 +11,7 @@ import axios from "axios";
 import Sunnyandwindy from "../../public/Sunnyandwindy.svg";
 import Rainbow from "../../public/Rainbow.svg";
 import Sunnyandsnowy from "../../public/Sunny and snowy.svg";
-import Snowfall from 'react-snowfall'
+import Snowfall from "react-snowfall";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +24,7 @@ export default function Home() {
   const [celsiusTemperature, setCelsiusTemperature] = useState("");
   const [fahrenheitTemperature, setFahrenheitTemperature] = useState("");
   const [country, setCountry] = useState("");
-  const [error,setError] = useState("")
+  const [error, setError] = useState("");
   const [forecastData, setForecastData] = useState([
     {
       date: "",
@@ -34,9 +34,9 @@ export default function Home() {
         maxtemp_f: "",
         mintemp_f: "",
         condition: {
-          text:"",
-          icon:""
-        }
+          text: "",
+          icon: "",
+        },
       },
     },
   ]);
@@ -46,7 +46,7 @@ export default function Home() {
       setError("");
       const response: any = await axios.post(
         `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no`
-      )
+      );
       setState(state);
       setCelsiusTemperature(response.data.current.temp_c);
       setFahrenheitTemperature(response.data.current.temp_f);
@@ -55,37 +55,39 @@ export default function Home() {
     } catch (error) {
       setError("No matching location found");
     }
-   
-    
   };
 
   const fetchWeatherForecast = async (state: string) => {
-
     try {
       setError("");
       const forecast: any = await axios.post(
         `https://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no&days=5`
-      )
-  
+      );
+
       const data = forecast.data.forecast.forecastday;
-      
-  
+
       setForecastData(data);
-      
     } catch (error) {
       setError("No matching location found");
     }
-   
   };
 
   const clearCurrentData = () => {
-    if (forecastData.length>1) {
+    if (forecastData.length > 1) {
       setState("");
       setError("");
     }
-  }
+  };
 
-  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   return (
     <>
@@ -103,7 +105,7 @@ export default function Home() {
           fetchWeatherForecast={fetchWeatherForecast}
           clearCurrentData={clearCurrentData}
         />
-        
+
         {state && !error ? (
           <div className={styles.cardContainer}>
             <Card
@@ -128,11 +130,16 @@ export default function Home() {
             />
           </div>
         ) : state ? (
-          <h1 style={{"fontSize":"1rem","textAlign":"center"}}>{error}</h1>
-        ) : ""}
+          <h1 style={{ fontSize: "1rem", textAlign: "center" }}>{error}</h1>
+        ) : (
+          ""
+        )}
         {state && !error ? (
           <>
-            <h1 className={styles.next} style={{ textAlign: "center", marginTop: "5%" }}>
+            <h1
+              className={styles.next}
+              style={{ textAlign: "center", marginTop: "5%" }}
+            >
               NEXT 4 DAYS DATA
             </h1>
             <div className={styles.cardContainer}>
@@ -157,9 +164,13 @@ export default function Home() {
         ) : (
           ""
         )}
-        <div className={styles.footer}>
-          <p>App made by Arun</p>
-        </div>
+        {state ? (
+          <div className={styles.footer}>
+            <p>Thank you for using the APP!</p>
+          </div>
+        ) : (
+          ""
+        )}
       </main>
     </>
   );
