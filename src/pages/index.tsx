@@ -98,7 +98,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.body}>
-        <Snowfall snowflakeCount={20} />
+        <Snowfall snowflakeCount={10} />
         <Header />
         <SearchBar
           fetchWeather={fetchWeather}
