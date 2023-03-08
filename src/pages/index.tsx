@@ -81,6 +81,7 @@ export default function Home() {
   const clearCurrentData = () => {
     if (forecastData.length>1) {
       setState("");
+      setError("");
     }
   }
 
