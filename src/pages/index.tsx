@@ -45,7 +45,7 @@ export default function Home() {
     try {
       setError("");
       const response: any = await axios.post(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no`
       )
       setState(state);
       setCelsiusTemperature(response.data.current.temp_c);
@@ -64,7 +64,7 @@ export default function Home() {
     try {
       setError("");
       const forecast: any = await axios.post(
-        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no&days=5`
+        `https://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no&days=5`
       )
   
       const data = forecast.data.forecast.forecastday;
