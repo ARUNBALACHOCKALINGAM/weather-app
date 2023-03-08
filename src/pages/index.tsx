@@ -127,9 +127,9 @@ export default function Home() {
               country={country}
             />
           </div>
-        ) : (
+        ) : state ? (
           <h1 style={{"fontSize":"1rem","textAlign":"center"}}>{error}</h1>
-        )}
+        ) : ""}
         {state && !error ? (
           <>
             <h1 className={styles.next} style={{ textAlign: "center", marginTop: "5%" }}>
