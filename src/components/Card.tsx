@@ -19,7 +19,8 @@ type Props = {
 
 export const Card = (props: Props) => {
   const [option, setOption] = React.useState("Celsius");
-
+  
+  console.log(props.image);
   return (
     <div className={styles.cardContainer}>
       <Image src={props.image} width={120} height={120} alt="sunnyandwindy" />

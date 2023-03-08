@@ -24,6 +24,7 @@ export default function Home() {
   const [celsiusTemperature, setCelsiusTemperature] = useState("");
   const [fahrenheitTemperature, setFahrenheitTemperature] = useState("");
   const [country, setCountry] = useState("");
+  const [error,setError] = useState("")
   const [forecastData, setForecastData] = useState([
     {
       date: "",
@@ -41,25 +42,40 @@ export default function Home() {
   ]);
 
   const fetchWeather = async (state: string) => {
-    const response: any = await axios.post(
-      `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no`
-    );
-
-    setState(state);
-    setCelsiusTemperature(response.data.current.temp_c);
-    setFahrenheitTemperature(response.data.current.temp_f);
-    setCountry(response.data.location.country);
-    setImage(response.data.current.condition.icon);
+    try {
+      setError("");
+      const response: any = await axios.post(
+        `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no`
+      )
+      setState(state);
+      setCelsiusTemperature(response.data.current.temp_c);
+      setFahrenheitTemperature(response.data.current.temp_f);
+      setCountry(response.data.location.country);
+      setImage(response.data.current.condition.icon);
+    } catch (error) {
+      setError("No matching location found");
+    }
+   
+    
   };
 
   const fetchWeatherForecast = async (state: string) => {
-    const forecast: any = await axios.post(
-      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no&days=5`
-    );
-    const data = forecast.data.forecast.forecastday;
-    
 
-    setForecastData(data);
+    try {
+      setError("");
+      const forecast: any = await axios.post(
+        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${state}&aqi=no&days=5`
+      )
+  
+      const data = forecast.data.forecast.forecastday;
+      
+  
+      setForecastData(data);
+      
+    } catch (error) {
+      setError("No matching location found");
+    }
+   
   };
 
   const clearCurrentData = () => {
@@ -86,7 +102,8 @@ export default function Home() {
           fetchWeatherForecast={fetchWeatherForecast}
           clearCurrentData={clearCurrentData}
         />
-        {state ? (
+        
+        {state && !error ? (
           <div className={styles.cardContainer}>
             <Card
               day="Today"
@@ -94,7 +111,7 @@ export default function Home() {
               state={state}
               celsiusTemperature={celsiusTemperature}
               fahrenheitTemperature={fahrenheitTemperature}
-              image={`https:${image}`}
+              image={`http:${image}`}
               country={country}
             />
             <Card
@@ -110,9 +127,9 @@ export default function Home() {
             />
           </div>
         ) : (
-          ""
+          <h1 style={{"fontSize":"1rem","textAlign":"center"}}>{error}</h1>
         )}
-        {state ? (
+        {state && !error ? (
           <>
             <h1 className={styles.next} style={{ textAlign: "center", marginTop: "5%" }}>
               NEXT 4 DAYS DATA

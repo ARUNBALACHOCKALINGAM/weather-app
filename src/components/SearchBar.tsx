@@ -8,9 +8,9 @@ import { Country, State, City } from "country-state-city";
 import { ICountry, IState, ICity } from "country-state-city";
 
 type Props = {
-  fetchWeather: Function
-  fetchWeatherForecast: Function
-  clearCurrentData: Function
+  fetchWeather: Function;
+  fetchWeatherForecast: Function;
+  clearCurrentData: Function;
 };
 
 export const SearchBar = (props: Props) => {
@@ -27,10 +27,10 @@ export const SearchBar = (props: Props) => {
 
   const filteredCountries = State.getAllStates().filter((state) => {
     return (
-      state.name.toUpperCase().includes(searchVal.toUpperCase()) && searchVal.length > 2
+      state.name.toUpperCase().includes(searchVal.toUpperCase()) &&
+      searchVal.length > 2
     );
   });
-
 
   return (
     <div className={styles.container}>
@@ -63,9 +63,17 @@ export const SearchBar = (props: Props) => {
       </div>
       {filteredCountries.length < 1 ? (
         <div className={styles.searchWrap}>
-        <li className={styles.listItem}>
-          <a>{searchVal}</a>
-        </li>
+          <li className={styles.listItem}>
+            <a
+              onClick={() => {
+                handleClearBtn();
+                props.fetchWeather(searchVal);
+                props.fetchWeatherForecast(searchVal);
+              }}
+            >
+              {searchVal}
+            </a>
+          </li>
         </div>
       ) : (
         <div className={styles.resultsWrap}>
@@ -73,11 +81,15 @@ export const SearchBar = (props: Props) => {
             {filteredCountries.map((country) => {
               return (
                 <li key={country.name} className={styles.listItem}>
-                  <a onClick={()=>{
-                    handleClearBtn();
-                    props.fetchWeather(country.name)
-                    props.fetchWeatherForecast(country.name)
-                  }}>{country.name}</a>
+                  <a
+                    onClick={() => {
+                      handleClearBtn();
+                      props.fetchWeather(country.name);
+                      props.fetchWeatherForecast(country.name);
+                    }}
+                  >
+                    {country.name}
+                  </a>
                 </li>
               );
             })}
