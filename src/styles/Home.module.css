@@ -3,13 +3,21 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  height: 120vh;
   padding: 6rem;
 }
 
 .body{
   height: 100vh;
   background-color: black;
+}
+
+.footer{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem;
 }
 
 .description {

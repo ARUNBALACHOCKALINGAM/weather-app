@@ -96,7 +96,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.body}>
-        <Snowfall snowflakeCount={20} style={{"zIndex":-10}}/>
+        <Snowfall snowflakeCount={20} />
         <Header />
         <SearchBar
           fetchWeather={fetchWeather}
@@ -157,6 +157,9 @@ export default function Home() {
         ) : (
           ""
         )}
+        <div className={styles.footer}>
+          <p>App made by Arun</p>
+        </div>
       </main>
     </>
   );
