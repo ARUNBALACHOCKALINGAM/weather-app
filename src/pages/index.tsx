@@ -126,7 +126,7 @@ export default function Home() {
         setHistory(data);
         console.log(history);
       } catch (error) {
-        if (historyDate != "undefined") {
+        if (historyDate) {
           setError("No matching location found");
         }
       }
