@@ -18,7 +18,9 @@ type Props = {
 };
 
 export const Card = (props: Props) => {
-  const [option, setOption] = React.useState("Celsius");
+  
+  const initialOption = localStorage.getItem("option") ? localStorage.getItem("option") : "Celsius";
+  const [option, setOption] = React.useState(initialOption);
   
   return (
     <div className={styles.cardContainer}>
@@ -48,7 +50,10 @@ export const Card = (props: Props) => {
                 marginLeft: "20px",
                 opacity: option === "Celsius" ? 1 : 0.5,
               }}
-              onClick={() => setOption("Celsius")}
+              onClick={() => {
+                localStorage.setItem("option","Celsius")
+                setOption("Celsius")
+              }}
             >
               C
             </p>
@@ -57,7 +62,10 @@ export const Card = (props: Props) => {
                 marginLeft: "20px",
                 opacity: option === "Fahrenheit" ? 1 : 0.5,
               }}
-              onClick={() => setOption("Fahrenheit")}
+              onClick={() => {
+                localStorage.setItem("option","Fahrenheit")
+                setOption("Fahrenheit")
+              }}
             >
               F
             </p>
@@ -84,7 +92,10 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Celsius" ? 1 : 0.5,
                 }}
-                onClick={() => setOption("Celsius")}
+                onClick={() => {
+                    localStorage.setItem("option","Celsius")
+                    setOption("Celsius")
+                }}
               >
                 C
               </p>
@@ -93,7 +104,10 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Fahrenheit" ? 1 : 0.5,
                 }}
-                onClick={() => setOption("Fahrenheit")}
+                onClick={() => {
+                    localStorage.setItem("option","Fahrenheit")
+                    setOption("Fahrenheit")
+                }}
               >
                 F
               </p>
@@ -118,7 +132,10 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Celsius" ? 1 : 0.5,
                 }}
-                onClick={() => setOption("Celsius")}
+                onClick={() => {
+                    localStorage.setItem("option","Celsius")
+                    setOption("Celsius")
+                }}
               >
                 C
               </p>
@@ -127,7 +144,10 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Fahrenheit" ? 1 : 0.5,
                 }}
-                onClick={() => setOption("Fahrenheit")}
+                onClick={() => {
+                    localStorage.setItem("option","Fahrenheit")
+                    setOption("Fahrenheit")
+                }}
               >
                 F
               </p>
