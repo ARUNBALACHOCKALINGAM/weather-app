@@ -13,6 +13,8 @@ type Props = {
   celsiusMinTemperature?: String;
   fahrenheitMaxTemperature?: String;
   fahrenheitMinTemperature?: String;
+  humidity?: String;
+  windspeed?: String;
   image: string;
   country: string;
 };
@@ -21,6 +23,13 @@ export const Card = (props: Props) => {
   
   const initialOption = localStorage.getItem("option") ? localStorage.getItem("option") : "Celsius";
   const [option, setOption] = React.useState(initialOption);
+
+
+  const selectOption = (e:any) => {
+    const value = e.target.innerHTML === "C" ? "Celsius" : "Fahrenheit";
+    localStorage.setItem("option",value)
+    setOption(value)
+  }
   
   return (
     <div className={styles.cardContainer}>
@@ -50,10 +59,7 @@ export const Card = (props: Props) => {
                 marginLeft: "20px",
                 opacity: option === "Celsius" ? 1 : 0.5,
               }}
-              onClick={() => {
-                localStorage.setItem("option","Celsius")
-                setOption("Celsius")
-              }}
+              onClick={selectOption}
             >
               C
             </p>
@@ -62,10 +68,7 @@ export const Card = (props: Props) => {
                 marginLeft: "20px",
                 opacity: option === "Fahrenheit" ? 1 : 0.5,
               }}
-              onClick={() => {
-                localStorage.setItem("option","Fahrenheit")
-                setOption("Fahrenheit")
-              }}
+              onClick={selectOption}
             >
               F
             </p>
@@ -92,10 +95,7 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Celsius" ? 1 : 0.5,
                 }}
-                onClick={() => {
-                    localStorage.setItem("option","Celsius")
-                    setOption("Celsius")
-                }}
+                onClick={selectOption}
               >
                 C
               </p>
@@ -104,10 +104,7 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Fahrenheit" ? 1 : 0.5,
                 }}
-                onClick={() => {
-                    localStorage.setItem("option","Fahrenheit")
-                    setOption("Fahrenheit")
-                }}
+                onClick={selectOption}
               >
                 F
               </p>
@@ -132,10 +129,7 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Celsius" ? 1 : 0.5,
                 }}
-                onClick={() => {
-                    localStorage.setItem("option","Celsius")
-                    setOption("Celsius")
-                }}
+                onClick={selectOption}
               >
                 C
               </p>
@@ -144,12 +138,43 @@ export const Card = (props: Props) => {
                   marginLeft: "20px",
                   opacity: option === "Fahrenheit" ? 1 : 0.5,
                 }}
-                onClick={() => {
-                    localStorage.setItem("option","Fahrenheit")
-                    setOption("Fahrenheit")
-                }}
+                onClick={selectOption}
               >
                 F
+              </p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "baseline",
+                textAlign: "right",
+                flexWrap:"wrap",
+                fontSize: "1rem",
+                marginTop:"4%"
+              }}
+            >
+              <p>Win speed:</p>
+              <p>
+                {props.windspeed}
+              </p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "baseline",
+                textAlign: "right",
+                flexWrap:"wrap",
+                fontSize: "1rem",
+                marginTop:"4%"
+              }}
+            >
+              <p>Humility</p>
+              <p>
+                {props.humidity}
               </p>
             </div>
           </>

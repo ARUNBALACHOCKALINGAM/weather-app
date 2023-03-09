@@ -7,17 +7,28 @@
   padding: 6rem;
 }
 
-.body{
+.body {
   height: 100vh;
   background-color: black;
 }
 
-.footer{
+.footer {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 6rem 0rem 2rem 0rem;
+}
+
+.topic {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 2%;
+}
+
+.topic p {
+  margin:  2%;
 }
 
 .description {
@@ -31,25 +42,24 @@
   font-family: var(--font-mono);
 }
 
-.header{
+.header {
   justify-content: center;
   text-align: center;
   margin-top: 5%;
 }
-.next{
+.next {
   text-align: center;
   margin-top: 5%;
 }
 
-
-.searchBar{
+.searchBar {
   justify-content: center;
   text-align: center;
   align-items: center;
   margin-top: 5%;
 }
 
-.searchInput{
+.searchInput {
   padding: 0.8%;
   width: 33.3%;
   border-radius: 10px;
@@ -62,7 +72,7 @@
   gap: 0.5rem;
 }
 
-.cardContainer{
+.cardContainer {
   width: 50%;
   display: flex;
   flex-wrap: wrap;
@@ -141,7 +151,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -169,7 +179,7 @@
 
 .thirteen::before,
 .thirteen::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
 }
@@ -222,15 +232,18 @@
   .content {
     padding: 4rem;
   }
+  .topic{
+    margin-top: 5%;
+  }
 
-  .next{
+  .next {
     background-color: white;
     color: black;
     font-size: 1.4rem;
     margin-top: 15%;
   }
-  
-  .cardContainer{
+
+  .cardContainer {
     width: 80%;
   }
 
@@ -310,7 +323,6 @@
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
-
 }
 
 @media (prefers-color-scheme: dark) {

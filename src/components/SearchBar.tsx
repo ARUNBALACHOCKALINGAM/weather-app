@@ -11,6 +11,7 @@ type Props = {
   fetchWeather: Function;
   fetchWeatherForecast: Function;
   clearCurrentData: Function;
+  state: string;
 };
 
 export const SearchBar = (props: Props) => {
@@ -61,7 +62,7 @@ export const SearchBar = (props: Props) => {
           style={{ fontSize: "2rem" }}
         ></MdOutlineCancel>
       </div>
-      {filteredCountries.length < 1 ? (
+      {filteredCountries.length < 1 && !props.state ? (
         <div className={styles.searchWrap}>
           <li className={styles.listItem}>
             <a
@@ -75,7 +76,7 @@ export const SearchBar = (props: Props) => {
             </a>
           </li>
         </div>
-      ) : (
+      ) : !props.state ? (
         <div className={styles.resultsWrap}>
           <ul>
             {filteredCountries.map((country) => {
@@ -95,7 +96,7 @@ export const SearchBar = (props: Props) => {
             })}
           </ul>
         </div>
-      )}
+      ) : ""}
     </div>
   );
 };
