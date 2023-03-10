@@ -5,11 +5,14 @@
   align-items: center;
   height: 120vh;
   padding: 6rem;
+  background-color: black;
+  color: white;
 }
 
 .body {
   height: 100vh;
   background-color: black;
+  color: white;
 }
 
 .footer {
