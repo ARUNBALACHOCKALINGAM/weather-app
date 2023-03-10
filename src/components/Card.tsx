@@ -172,7 +172,7 @@ export const Card = (props: Props) => {
                 marginTop:"4%"
               }}
             >
-              <p>Humility</p>
+              <p>Humidity:</p>
               <p>
                 {props.humidity}
               </p>
